@@ -20,6 +20,7 @@ zmodload zsh/complist
 
 # aliases
 alias vi=nvim
+alias ls=lsd
 
 # bindings
 bindkey -M vicmd 'k' history-substring-search-up
@@ -35,3 +36,6 @@ setopt share_history
 
 # style
 zstyle ':completion:*' menu yes select
+
+# prompt
+eval "$(starship init zsh)"
