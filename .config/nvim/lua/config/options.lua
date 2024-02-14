@@ -14,9 +14,10 @@ opt.smartindent = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.undofile = true
-opt.timeoutlen = 100
+opt.timeoutlen = 300
 opt.updatetime = 300
 opt.scrolloff = 8
 opt.sidescrolloff = 8
+opt.termguicolors = true
 
 return {}

@@ -23,6 +23,7 @@ alias vi=nvim
 alias ls=lsd
 alias ns='nix-shell --command zsh'
 alias wget='wget --no-hsts'
+alias reload="source $ZDOTDIR/.zshrc"
 
 # bindings
 bindkey -M vicmd 'k' history-substring-search-up
@@ -41,3 +42,9 @@ zstyle ':completion:*' menu yes select
 
 # prompt
 eval "$(starship init zsh)"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"

@@ -1,6 +1,7 @@
-export ZDOTDIR=$HOME/.config/zsh
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
 export LESSHISTFILE=/dev/null
 export EDITOR=/usr/local/bin/nvim
 export VISUAL=/usr/local/bin/nvim
 export SHELL_SESSIONS_DISABLE=1
+export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
