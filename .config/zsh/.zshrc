@@ -21,6 +21,8 @@ zmodload zsh/complist
 # aliases
 alias vi=nvim
 alias ls=lsd
+alias ns='nix-shell --command zsh'
+alias wget='wget --no-hsts'
 
 # bindings
 bindkey -M vicmd 'k' history-substring-search-up
