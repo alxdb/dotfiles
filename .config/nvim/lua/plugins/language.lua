@@ -36,16 +36,11 @@ return {
           lua_ls = function()
             require("neodev").setup()
             require("lspconfig").lua_ls.setup({})
-          end
+          end,
         },
       })
       require("mason-lspconfig").setup(opts)
     end,
-  },
-  {
-    "mrded/nvim-lsp-notify",
-    dependencies = { "rcarriga/nvim-notify" },
-    config = true,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -57,5 +52,5 @@ return {
       auto_install = true,
       highlight = { enable = true },
     },
-  }
+  },
 }

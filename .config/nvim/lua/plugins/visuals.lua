@@ -18,24 +18,23 @@ return {
     },
   },
   {
-    "rcarriga/nvim-notify",
-    main = "notify",
-    opts = {
-      render = "compact",
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    config = true,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
     },
-    init = function(_)
-      vim.notify = require("notify")
-    end,
   },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    config = true
+    config = true,
   },
   {
     "lewis6991/gitsigns.nvim",
     opts = {
       yadm = { enable = true },
-    }
-  }
+    },
+  },
 }
