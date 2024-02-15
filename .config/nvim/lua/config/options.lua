@@ -12,6 +12,7 @@ opt.smartindent = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.undofile = true
+opt.timeout = true
 opt.timeoutlen = 300
 opt.updatetime = 50
 opt.scrolloff = 8

@@ -27,4 +27,15 @@ return {
       vim.notify = require("notify")
     end,
   },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = true
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      yadm = { enable = true },
+    }
+  }
 }
