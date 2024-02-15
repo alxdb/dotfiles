@@ -23,7 +23,8 @@ alias vi=nvim
 alias ls=lsd
 alias ns='nix-shell --command zsh'
 alias wget='wget --no-hsts'
-alias reload="source $ZDOTDIR/.zshrc"
+alias reload="source $HOME/.zshenv && source $ZDOTDIR/.zshrc"
+alias config="vi $ZDOTDIR/.zshrc"
 
 # bindings
 bindkey -M vicmd 'k' history-substring-search-up

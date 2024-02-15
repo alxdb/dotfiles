@@ -1,11 +1,7 @@
-return {
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    init = function(_)
-      local lsp_zero = require("lsp-zero")
-      lsp_zero.on_attach(function(client, bufnr)
-        lsp_zero.default_keymaps({ buffer = bufnr })
-      end)
-    end,
-  },
-}
+vim.g.mapleader = " "
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-b>", "<C-b>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
