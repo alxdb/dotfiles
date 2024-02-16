@@ -14,7 +14,8 @@ return {
     init = function(_)
       local lsp_zero = require("lsp-zero")
       lsp_zero.on_attach(function(_, bufnr)
-        lsp_zero.default_keymaps({ buffer = bufnr })
+        lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
+        lsp_zero.buffer_autoformat()
       end)
     end,
   },
@@ -25,21 +26,30 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "jsonls", "rust_analyzer" },
+      ensure_installed = { "lua_ls", "jsonls", "rust_analyzer", "pylsp" },
     },
     config = function(_, opts)
-      local lsp_zero = require("lsp-zero")
+      require("mason-lspconfig").setup(
+        vim.tbl_deep_extend("force", opts, {
+          handlers = {
+            require("lsp-zero").default_setup,
 
-      opts = vim.tbl_deep_extend("force", opts, {
-        handlers = {
-          lsp_zero.default_setup,
-          lua_ls = function()
-            require("neodev").setup()
-            require("lspconfig").lua_ls.setup({})
-          end,
-        },
-      })
-      require("mason-lspconfig").setup(opts)
+            lua_ls = function()
+              require("neodev").setup()
+              require("lspconfig").lua_ls.setup({})
+            end,
+
+            pylsp = function()
+              require("lspconfig").pylsp.setup({
+                plugins = {
+                  ruff = { enabled = true },
+                  pylsp_mypy = { enabled = true },
+                }
+              })
+            end,
+          }
+        })
+      )
     end,
   },
   {
