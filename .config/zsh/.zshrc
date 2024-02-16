@@ -20,7 +20,10 @@ zmodload zsh/complist
 
 # aliases
 alias vi=nvim
-alias ls=lsd
+alias ls='lsd -1'
+alias ll='lsd -l'
+alias la='lsd -1 -A'
+alias lla='lsd -lA'
 alias ns='nix-shell --command zsh'
 alias wget='wget --no-hsts'
 alias reload="source $HOME/.zshenv && source $ZDOTDIR/.zshrc"
