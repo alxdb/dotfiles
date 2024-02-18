@@ -7,9 +7,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/nvim-cmp",
       "L3MON4D3/LuaSnip",
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      "folke/neodev.nvim",
     },
     init = function(_)
       local lsp_zero = require("lsp-zero")
@@ -25,8 +22,23 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "VonHeikemen/lsp-zero.nvim",
+      "neovim/nvim-lspconfig",
+      "folke/neodev.nvim",
+    },
     opts = {
-      ensure_installed = { "lua_ls", "jsonls", "rust_analyzer", "pylsp" },
+      ensure_installed = {
+        "lua_ls",
+        "jsonls",
+        "rust_analyzer",
+        "pylsp",
+        "taplo",
+        "tsserver",
+        "tailwindcss",
+        "eslint",
+      },
     },
     config = function(_, opts)
       require("mason-lspconfig").setup(
@@ -44,10 +56,36 @@ return {
                 plugins = {
                   ruff = { enabled = true },
                   pylsp_mypy = { enabled = true },
-                }
+                },
               })
             end,
-          }
+          },
+        })
+      )
+    end,
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "williamboman/mason.nvim",
+    },
+    config = function(_, opts)
+      local null_ls = require("null-ls")
+      local mason_registry = require("mason-registry")
+
+      local prettierd = mason_registry.get_package("prettierd")
+      if not prettierd:is_installed() then
+        prettierd:install()
+      end
+
+      null_ls.setup(
+        vim.tbl_deep_extend("force", opts, {
+          sources = {
+            null_ls.builtins.formatting.prettierd.with({
+              filetypes = { "css" },
+            }),
+          },
         })
       )
     end,

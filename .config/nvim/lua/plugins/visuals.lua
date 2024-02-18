@@ -38,8 +38,34 @@ return {
     },
   },
   {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-  }
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.5",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      {
+        "<leader>ff",
+        function() require("telescope.builtin").find_files() end,
+        desc = "Telescope (find) Files",
+      },
+      {
+        "<leader>bb",
+        function() require("telescope.builtin").buffers() end,
+        desc = "Telescope (browse) Buffers",
+      },
+    },
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    init = function(_)
+      require("telescope").load_extension("file_browser")
+    end,
+    keys = {
+      {
+        "<leader>fb",
+        function() require("telescope").extensions.file_browser.file_browser() end,
+        desc = "Telescope file browser",
+      },
+    },
+  },
 }

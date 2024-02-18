@@ -1,3 +1,14 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+[package]
+disabled = true
+
 [nix_shell]
 format = 'via [$symbol\($name\)]($style) '
 symbol = ' '
+
+# waiting for https://github.com/starship/starship/pull/5684 to be merged
+[custom.direnv]
+format = 'with [.env]($style) '
+style = "fg:black dimmed italic"
+when = "printenv DIRENV_FILE"

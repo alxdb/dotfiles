@@ -11,3 +11,4 @@ export VISUAL=/usr/local/bin/nvim
 export SHELL_SESSIONS_DISABLE=1
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 export NODE_REPL_HISTORY=""
+export DIRENV_LOG_FORMAT=""
