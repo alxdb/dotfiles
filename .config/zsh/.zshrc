@@ -20,6 +20,7 @@ zmodload zsh/complist
 
 # aliases
 alias vi=nvim
+alias vg=neovide
 alias ls='lsd -1'
 alias ll='lsd -l'
 alias la='lsd -1 -A'

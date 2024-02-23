@@ -38,6 +38,10 @@ return {
         "tsserver",
         "tailwindcss",
         "eslint",
+        "gopls",
+        "yamlls",
+        "bufls",
+        "rnix",
       },
     },
     config = function(_, opts)
@@ -70,21 +74,27 @@ return {
       "nvim-lua/plenary.nvim",
       "williamboman/mason.nvim",
     },
+    opts = {
+      mason_packages = { "prettierd", "buf" },
+    },
     config = function(_, opts)
-      local null_ls = require("null-ls")
       local mason_registry = require("mason-registry")
-
-      local prettierd = mason_registry.get_package("prettierd")
-      if not prettierd:is_installed() then
-        prettierd:install()
+      for _, package_name in ipairs(opts.mason_packages) do
+        local package = mason_registry.get_package(package_name)
+        if not package:is_installed() then
+          package:install()
+        end
       end
 
+      local null_ls = require("null-ls")
       null_ls.setup(
         vim.tbl_deep_extend("force", opts, {
           sources = {
             null_ls.builtins.formatting.prettierd.with({
-              filetypes = { "css" },
+              filetypes = { "css", "yaml" },
             }),
+            null_ls.builtins.diagnostics.buf,
+            null_ls.builtins.formatting.buf,
           },
         })
       )

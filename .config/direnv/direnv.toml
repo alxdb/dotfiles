@@ -1,0 +1,2 @@
+# [global]
+# hide_env_diff = true # not yet supported (https://github.com/direnv/direnv/pull/1234)
