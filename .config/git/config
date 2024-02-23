@@ -1,3 +1,5 @@
 [user]
 	name = Alexander Davidson Bryan
 	email = alxdb@pm.me
+[diff]
+	tool = nvimdiff
