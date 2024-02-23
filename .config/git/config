@@ -3,3 +3,5 @@
 	email = alxdb@pm.me
 [diff]
 	tool = nvimdiff
+[core]
+	excludesFile = /Users/alexdb/.config/git/ignore
