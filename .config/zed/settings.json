@@ -11,9 +11,9 @@
     "copilot": false
   },
   "vim_mode": true,
-  "ui_font_size": 16,
-  "buffer_font_size": 14,
-  "theme": "Ayu Dark",
+  "ui_font_size": 14,
+  "buffer_font_size": 12,
+  "theme": "Ayu Mirage",
   "ui_font_family": "SF Mono",
   "buffer_font_family": "SFMono Nerd Font"
 }

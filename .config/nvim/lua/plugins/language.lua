@@ -42,6 +42,7 @@ return {
         "yamlls",
         "bufls",
         "rnix",
+        "dockerls",
       },
     },
     config = function(_, opts)

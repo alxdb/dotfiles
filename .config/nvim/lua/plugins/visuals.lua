@@ -1,5 +1,10 @@
 return {
   {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = true,
+  },
+  {
     "Shatur/neovim-ayu",
     main = "ayu",
     opts = { mirage = true },
@@ -27,14 +32,36 @@ return {
     },
   },
   {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    config = true,
-  },
-  {
     "lewis6991/gitsigns.nvim",
+    dependencies = { "folke/which-key.nvim" },
     opts = {
       yadm = { enable = true },
+      on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
+        local wk = require("which-key")
+
+        vim.keymap.set("n", "]c", function()
+          if vim.wo.diff then return "]c" end
+          vim.schedule(function() gs.next_hunk() end)
+          return "<Ignore>"
+        end, { buffer = bufnr, expr = true })
+        vim.keymap.set("n", "[c", function()
+          if vim.wo.diff then return "[c" end
+          vim.schedule(function() gs.prev_hunk() end)
+          return "<Ignore>"
+        end, { buffer = bufnr, expr = true })
+
+        wk.register({
+          s = {
+            name = "gitsigns",
+            s = { gs.stage_hunk, "stage hunk" },
+            S = { gs.stage_buffer, "stage buffer" },
+            r = { gs.reset_hunk, "reset hunk" },
+            p = { gs.preview_hunk, "preview hunk" },
+            b = { gs.toggle_current_line_blame, "blame line toggle" },
+          },
+        }, { prefix = "<leader>g" })
+      end,
     },
   },
   {
